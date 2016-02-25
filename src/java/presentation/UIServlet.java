@@ -5,6 +5,7 @@
  */
 package presentation;
 
+import domain.SoccerControl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,12 +13,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author dennisschmock
  */
-@WebServlet(name = "UIServlet", urlPatterns = {"/UIServlet"})
+@WebServlet(name = "UIServlet", urlPatterns = {"/tournament"})
 public class UIServlet extends HttpServlet {
 
     /**
@@ -31,7 +33,32 @@ public class UIServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        SoccerControl sc = (SoccerControl)session.getAttribute("controller");
+        if (sc==null){
+                  sc = SoccerControl.getInstance();
+                  session.setAttribute("controller", sc);
+
+        }
+              
+        String action = request.getParameter("action");
+        if (action.equalsIgnoreCase("createUser")){
+            createPlayer(session,sc);
+        }
+        if (action.equalsIgnoreCase("updateUser")){
+          updatePlayer(session,sc);
+        }
+        if (action.equalsIgnoreCase("addgoal")){
+            addGoal(session,sc);
+            
+        }
+        if (action.equalsIgnoreCase("updategoal")){
+            updateGoal(session,sc);
+        }
+        
+        if (action.equalsIgnoreCase("deletegoal")){
+            deleteGoal(session,sc);
+        }
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -86,6 +113,25 @@ public class UIServlet extends HttpServlet {
     }// </editor-fold>
     
     public void createGoal(int playerId, int matchId){
+        
+    }
+
+    private void deleteGoal(HttpSession session) {
+    }
+
+    private void updateGoal(HttpSession session) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void addGoal(HttpSession session) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void updatePlayer(HttpSession session) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void createPlayer(HttpSession session) {
         
     }
 
