@@ -46,18 +46,18 @@ public class UIServlet extends HttpServlet {
             createPlayer(session,sc);
         }
         if (action.equalsIgnoreCase("updateUser")){
-          updatePlayer(session,sc);
+          updatePlayer(session);
         }
         if (action.equalsIgnoreCase("addgoal")){
-            addGoal(session,sc);
+            addGoal(session);
             
         }
         if (action.equalsIgnoreCase("updategoal")){
-            updateGoal(session,sc);
+            updateGoal(session);
         }
         
         if (action.equalsIgnoreCase("deletegoal")){
-            deleteGoal(session,sc);
+            deleteGoal(session);
         }
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -131,7 +131,7 @@ public class UIServlet extends HttpServlet {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void createPlayer(HttpSession session) {
+    private void createPlayer(HttpSession session, SoccerControl sc) {
         
     }
 
