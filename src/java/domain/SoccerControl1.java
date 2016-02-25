@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author dennisschmock
  */
-public class SoccerControl {
+public class SoccerControl1 {
     
     public static void main(String[] args) {
         Player player1 = new Player(1, "Dennis1", "team1",13,"ATT");
@@ -49,11 +49,11 @@ public class SoccerControl {
        
     }
     private List<Match> matches = new ArrayList<>();
-    private SoccerControl(){
+    private SoccerControl1(){
         
     }
-    public static SoccerControl getInstance(){
-        return new SoccerControl();
+    public static SoccerControl1 getInstance(){
+        return new SoccerControl1();
     }
  
     
